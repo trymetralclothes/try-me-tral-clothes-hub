@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Try Me Tral Clothes Hub</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0;font-family:Arial,sans-serif}
+body{background:#f5f5f5;color:#1f2937}
+header{background:#111827;color:white;padding:18px 6%;display:flex;justify-content:space-between;align-items:center;position:sticky;top:0;z-index:10}
+.logo{font-size:22px;font-weight:800}nav a{color:white;text-decoration:none;margin-left:18px}
+.hero{padding:75px 20px;text-align:center;background:linear-gradient(135deg,#111827,#4b5563);color:white}
+.hero h1{font-size:42px;margin-bottom:12px}.hero p{font-size:18px;margin-bottom:24px;color:#e5e7eb}
+.btn{border:0;border-radius:8px;background:#22c55e;color:white;padding:12px 20px;font-weight:bold;cursor:pointer;text-decoration:none;display:inline-block}
+.container{width:92%;max-width:1150px;margin:40px auto}
+.title{text-align:center;font-size:30px;margin-bottom:24px}
+.tools{display:flex;justify-content:center;gap:10px;flex-wrap:wrap;margin-bottom:25px}
+.tools input,.tools select{padding:13px;border:1px solid #ddd;border-radius:8px;min-width:220px}
+.products{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.card{background:white;border-radius:12px;overflow:hidden;box-shadow:0 3px 15px #00000012}
+.card img{width:100%;height:250px;object-fit:cover}
+.content{padding:17px}.content h3{font-size:20px;margin-bottom:7px}.condition{color:#6b7280;margin-bottom:8px}
+.price{font-size:21px;font-weight:bold;color:#16a34a;margin:10px 0}
+.about{background:white;padding:30px;border-radius:12px;text-align:center;line-height:1.7}
+.contact{background:#111827;color:white;text-align:center;padding:45px 20px}.contact p{margin:10px 0 20px;color:#d1d5db}
+footer{text-align:center;background:#030712;color:#aaa;padding:18px}
+@media(max-width:800px){.products{grid-template-columns:repeat(2,1fr)}.hero h1{font-size:34px}}
+@media(max-width:520px){nav{display:none}.products{grid-template-columns:1fr}.hero h1{font-size:30px}}
+</style>
+</head>
+<body>
+<header>
+<div class="logo">🛍️ Try Me Tral Clothes Hub</div>
+<nav><a href="#home">Home</a><a href="#shop">Shop</a><a href="#about">About</a><a href="#contact">Contact</a></nav>
+</header>
+
+<section class="hero" id="home">
+<h1>Try Me Tral Clothes Hub</h1>
+<p>Affordable pre-loved clothes — photo dekho, rate dekho aur WhatsApp par order karo.</p>
+<a href="#shop" class="btn">Shop Now</a>
+</section>
+
+<section class="container" id="shop">
+<h2 class="title">Available Clothes 👕</h2>
+<div class="tools">
+<input id="search" placeholder="Clothes search karein..." oninput="filterProducts()">
+<select id="category" onchange="filterProducts()">
+<option value="all">All Categories</option><option value="shirt">Shirts</option><option value="tshirt">T-Shirts</option><option value="jacket">Jackets</option><option value="jeans">Jeans</option>
+</select>
+</div>
+<div class="products" id="products">
+
+<div class="card" data-category="shirt">
+<img src="https://images.unsplash.com/photo-1602810318383-e386cc2a3ccf?auto=format&fit=crop&w=800&q=80">
+<div class="content"><h3>Classic Shirt</h3><p class="condition">Good Condition</p><div class="price">₹299</div><button class="btn" onclick="buy('Classic Shirt',299)">Buy Now</button></div>
+</div>
+
+<div class="card" data-category="tshirt">
+<img src="https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?auto=format&fit=crop&w=800&q=80">
+<div class="content"><h3>Premium T-Shirt</h3><p class="condition">Very Good Condition</p><div class="price">₹199</div><button class="btn" onclick="buy('Premium T-Shirt',199)">Buy Now</button></div>
+</div>
+
+<div class="card" data-category="jacket">
+<img src="https://images.unsplash.com/photo-1551028719-00167b16eac5?auto=format&fit=crop&w=800&q=80">
+<div class="content"><h3>Winter Jacket</h3><p class="condition">Excellent Condition</p><div class="price">₹699</div><button class="btn" onclick="buy('Winter Jacket',699)">Buy Now</button></div>
+</div>
+
+<div class="card" data-category="jeans">
+<img src="https://images.unsplash.com/photo-1542272604-787c3835535d?auto=format&fit=crop&w=800&q=80">
+<div class="content"><h3>Blue Jeans</h3><p class="condition">Good Condition</p><div class="price">₹399</div><button class="btn" onclick="buy('Blue Jeans',399)">Buy Now</button></div>
+</div>
+
+</div>
+</section>
+
+<section class="container" id="about">
+<h2 class="title">About Us</h2>
+<div class="about"><p>Welcome to <strong>Try Me Tral Clothes Hub</strong> 🛍️</p><p>Affordable aur achhi condition ke pre-loved clothes. Har item ki photo aur rate website par dekhein.</p></div>
+</section>
+
+<section class="contact" id="contact">
+<h2>Order / Enquiry 📱</h2><p>WhatsApp par directly message karein.</p>
+<a class="btn" href="https://wa.me/917051424438?text=Hello%20Try%20Me%20Tral%20Clothes%20Hub%2C%20mujhe%20clothes%20ke%20baare%20mein%20poochna%20hai." target="_blank">WhatsApp Us</a>
+</section>
+
+<footer>© 2026 Try Me Tral Clothes Hub — All Rights Reserved</footer>
+
+<script>
+function filterProducts(){
+let s=document.getElementById("search").value.toLowerCase(),c=document.getElementById("category").value;
+document.querySelectorAll(".card").forEach(x=>{
+let n=x.querySelector("h3").innerText.toLowerCase(),cat=x.dataset.category;
+x.style.display=(n.includes(s)&&(c==="all"||cat===c))?"block":"none";
+});
+}
+function buy(name,price){
+let msg="Hello Try Me Tral Clothes Hub!%0A%0AMujhe ye item chahiye:%0A"+name+"%0APrice: ₹"+price+"%0A%0AKya ye available hai?";
+window.open("https://wa.me/917051424438?text="+msg,"_blank");
+}
+</script>
+</body>
+</html>
